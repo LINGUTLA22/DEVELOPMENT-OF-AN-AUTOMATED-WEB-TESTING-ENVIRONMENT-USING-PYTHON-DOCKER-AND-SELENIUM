@@ -1,0 +1,34 @@
+{
+  "command_a": "docker build -t selenium-h .",
+  "command_b": "docker run -dit -p {ssh_port}:22 -p {selenium_port}:{selenium_port} --name {container_name} selenium-h",
+  "ssh": {
+    "hostname": "localhost",
+    "username": "selenium_grid",
+    "password": "kernel",
+    "timeout": 10
+  },
+  "java_command_template": "java -jar selenium-server.jar standalone --host 0.0.0.0 --port {selenium_port}",
+  "containers": [
+    {
+      "name": "selenium-h1",
+      "ssh_port": 2234,
+      "selenium_port": 4445
+    },
+    {
+      "name": "selenium-h2",
+      "ssh_port": 2235,
+      "selenium_port": 4446
+    },
+    {
+      "name": "selenium-h3",
+      "ssh_port": 2236,
+      "selenium_port": 4447
+    },
+    {
+      "name": "selenium-h4",
+      "ssh_port": 2237,
+      "selenium_port": 4448
+    }
+  ]
+}
+
